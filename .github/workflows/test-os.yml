@@ -70,7 +70,7 @@ jobs:
           retention-days: 1
 
   test-windows-amd64:
-    runs-on: windows-2022
+    runs-on: ${{ matrix.os }}
     needs:
       - build
     env:
@@ -79,6 +79,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        os: [windows-2022, windows-2025]
         worker:
           - containerd
         pkg:
